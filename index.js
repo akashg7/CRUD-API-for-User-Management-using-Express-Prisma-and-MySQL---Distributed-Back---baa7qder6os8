@@ -63,13 +63,13 @@ app.post('/api/auth/login', async (req, res) => {
       where: { email },
     });
 
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-
-   if (!isPasswordCorrect){
+      if(!user){
+    return res.status(404).json({
+      "error": "User not found"
+    })
+  }
+  const isCompare = await bcrypt.compare(password,user.password)
+  if (!isCompare){
     return res.status(401).json({
       "error": "Invalid credentials"
     })
