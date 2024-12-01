@@ -18,19 +18,10 @@ app.post('/api/auth/signup' , async (req , res)=>{
   
   // console.log(name , email , password)
 
-  if(!name || !email || !password){
-    if(!email && !password){return res.status(400).json({
-      "error": "Email and password is required" 
-    })};
-    if(!email)
-    {return res.status(400).json({
-      "error": "Email is required" 
-    })};
-    if(!password){return res.status(400).json({
-      "error": "Email is required" 
-    })};
-
-  };
+if (!email || !password){
+    return res.status(400).json({"error": "Email is required"})
+  }
+    
   const alreadyExists = await prisma.user.findUnique({
     where : {email : email}
   });
