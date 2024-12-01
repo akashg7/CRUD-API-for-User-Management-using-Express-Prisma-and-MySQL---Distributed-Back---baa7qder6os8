@@ -80,7 +80,7 @@ app.post('/api/auth/login', async (req, res) => {
       JWT_SECRET,
       { expiresIn: '1h' }
     );
-if(user){
+
     return res.status(200).json({
       userdata: {
         id: user.id,
@@ -89,7 +89,6 @@ if(user){
       },
       accessToken: token,
     });
-}
   } catch (err) {
     console.error(err);
     return res.status(500).json({ message: "Internal server error" });
