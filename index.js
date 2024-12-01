@@ -13,8 +13,9 @@ const PORT = process.env.PORT || 3000;
 const JWT_SECRET="68d97a7b7965450091cd86a139a66caaca857c05511860b11b0064e388ba105328de791c8336dd7561f52ea7f2fa64f2d09810cfea12978b571cdceab05270b";
 const BCRYPT_SALT_ROUNDS=10;
 app.post('/api/auth/signup' , async (req , res)=>{
-  try{
   const {name , email , password} = req.body
+  try{
+  
   // console.log(name , email , password)
 
   if(!name || !email || !password){
@@ -61,8 +62,9 @@ app.post('/api/auth/signup' , async (req , res)=>{
 
 
 app.post('/api/auth/login' , async (req , res)=>{
-  try{
   const {email , password} = req.body;
+  try{
+  
   // console.log(name , email , password)
 
   if(!email || !password){
