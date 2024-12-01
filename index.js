@@ -69,9 +69,11 @@ app.post('/api/auth/login', async (req, res) => {
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
-    if (!isPasswordCorrect) {
-      return res.status(401).json({ error: "Invalid credentials" });
-    }
+   if (!isPasswordCorrect){
+    return res.status(401).json({
+      "error": "Invalid credentials"
+    })
+  }
 
     const token = jwt.sign(
       { userId: user.id, email: user.email },
